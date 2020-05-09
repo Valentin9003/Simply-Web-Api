@@ -91,7 +91,7 @@ namespace Api.Services
                                          Title = b.Title
                                      }).ToList()
                            }).FirstOrDefaultAsync();
-
+                var issd = context.Author.FirstOrDefault(s => s.Name == "Pesho").AuthorId;
                 if (author != null)
                 {
                     this.memoryCache.Set(id, author, TimeSpan.FromSeconds(600));
