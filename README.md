@@ -1,2 +1,2 @@
 # Simply-Web-Api
-With dynamic search, in-memory cache, and in-memory DB
+.NET 5 API With dynamic search, in-memory cache, and in-memory DB
