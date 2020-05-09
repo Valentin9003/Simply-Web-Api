@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
-using Api.Data.Models;
 using Api.Models;
 using Api.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
 
 namespace Api.Controllers
 {
@@ -49,7 +43,7 @@ namespace Api.Controllers
                 return Ok();
             }
 
-            return BadRequest("Something went wrong! No user created.");
+            return BadRequest();
         }
 
         [HttpDelete]
@@ -72,7 +66,7 @@ namespace Api.Controllers
                 return Ok();
             }
 
-            return BadRequest("Something went wrong! No user updated.");
+            return BadRequest();
         }
 
         [HttpGet]
@@ -81,14 +75,9 @@ namespace Api.Controllers
         {
             if (apiService.CheckPropertyExist(rules.OrderBy) || apiService.CheckPropertyExist(rules.FilterBy))
             {
-                return BadRequest("Incorect property name: 'OrderBy' or 'FilterBy'");
+                return BadRequest();
             }
             var result = await apiService.GetAuthorListAsync(rules);
-
-            if (result == null || result.Count == 0)
-            {
-                return NotFound("No authors found for this criteria!");
-            }
 
             return Ok(result);
         }
