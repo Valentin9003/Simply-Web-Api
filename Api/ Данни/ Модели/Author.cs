@@ -18,7 +18,6 @@ namespace Api.Data.Models
         [Required]
         public string BirthYear { get; set; }
 
-        [Required]
         public List<Book> Books { get; set; } = new List<Book>();
     }
 }
